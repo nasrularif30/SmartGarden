@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SmartGarden</string>
+    <string name="status_hujan">Hujan</string>
+    <string name="tanaman_1">Sawi</string>
+    <string name="cap_humidity">Humidity(%)</string>
+    <string name="cap_suhu">Suhu(°C)</string>
+    <string name="cap_moisture">Moisture(%)</string>
+    <string name="tanaman_2">Terong</string>
+    <string name="tanaman_3">Cabai</string>
+    <string name="tanaman_4">Buncis</string>
+    <string name="cap_cuaca">Cuaca</string>
+    <string name="title_activity_admin">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
