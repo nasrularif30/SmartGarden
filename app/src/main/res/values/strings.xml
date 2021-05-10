@@ -10,7 +10,8 @@
     <string name="tanaman_4">Buncis</string>
     <string name="cap_cuaca">Cuaca</string>
     <string name="title_activity_admin">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">TanamanKu</string>
+    <string name="title_dashboard">Kendali</string>
+    <string name="title_notifications">Konfigurasi</string>
+    <string name="siram">Siram Tanaman</string>
 </resources>
