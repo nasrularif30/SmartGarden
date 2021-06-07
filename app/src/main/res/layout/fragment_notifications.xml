@@ -11,16 +11,18 @@
         android:id="@+id/lyheader"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentTop="true">
-        <View
-            android:id="@+id/logo"
-            android:layout_width="300dp"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="6dp"
-            android:background="@drawable/ic_header"
-            android:padding="6dp"
-            android:layout_alignParentLeft="true"/>
+            android:drawableLeft="@drawable/logowhite_small"
+            android:text="@string/app_name"
+            android:textSize="32sp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            />
         <ImageView
             android:id="@+id/setting"
             android:layout_width="wrap_content"
@@ -77,8 +79,8 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_gravity="center"
+                            android:gravity="center_vertical|right"
+                            android:layout_gravity="center_vertical|right"
                             android:layout_marginVertical="10dp"
                             android:padding="0dp">
                             <TextView
@@ -88,11 +90,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:text="Waktu"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="10dp"
                                 android:gravity="center_vertical"
                                 android:layout_marginLeft="10dp"
                                 android:textSize="24sp"
-                                android:textColor="#147492"/>
+                                android:textColor="#147492"
+                                android:layout_alignParentStart="true" />
                             <TextView
                                 android:id="@+id/tv_waktujam"
                                 android:layout_marginHorizontal="3dp"
@@ -101,7 +104,11 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@+id/lbl_waktu"
                                 android:background="@drawable/bg_et"
+                                android:maxLength="2"
+                                android:maxLines="1"
+                                android:lines="1"
                                 android:textSize="36sp"
+                                android:numeric="integer"
                                 android:text="00"
                                 android:gravity="center"
                                 android:textColor="@color/white"
@@ -115,7 +122,7 @@
                                 android:text=":"
                                 android:gravity="center"
                                 android:textColor="@color/color_text_blue"
-                                android:padding="9dp"/>
+                                android:paddingVertical="9dp"/>
                             <TextView
                                 android:id="@+id/tv_waktumenit"
                                 android:layout_marginHorizontal="3dp"
@@ -125,7 +132,11 @@
                                 android:layout_toRightOf="@+id/space1"
                                 android:background="@drawable/bg_et"
                                 android:textSize="36sp"
+                                android:maxLength="2"
+                                android:maxLines="1"
+                                android:lines="1"
                                 android:text="00"
+                                android:numeric="integer"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:padding="9dp"/>
@@ -138,7 +149,7 @@
                                 android:text=":"
                                 android:gravity="center"
                                 android:textColor="@color/color_text_blue"
-                                android:padding="9dp"/>
+                                android:paddingVertical="9dp"/>
                             <TextView
                                 android:id="@+id/tv_waktudetik"
                                 android:layout_marginHorizontal="3dp"
@@ -147,17 +158,22 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@+id/space2"
                                 android:background="@drawable/bg_et"
+                                android:maxLength="2"
+                                android:maxLines="1"
+                                android:lines="1"
                                 android:textSize="36sp"
                                 android:text="00"
+                                android:numeric="integer"
                                 android:gravity="center"
                                 android:textColor="@color/white"
-                                android:padding="9dp"/>
+                                android:padding="9dp"
+                                android:layout_marginRight="10dp"/>
                         </RelativeLayout>
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_gravity="center"
+                            android:gravity="center_vertical|right"
+                            android:layout_gravity="center_vertical"
                             android:layout_marginVertical="10dp"
                             android:padding="0dp">
                             <TextView
@@ -167,7 +183,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:text="Durasi"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="10dp"
                                 android:gravity="center_vertical"
                                 android:layout_marginLeft="10dp"
                                 android:textSize="24sp"
@@ -180,8 +196,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@+id/lbl_durasi"
                                 android:background="@drawable/bg_et"
+                                android:maxLength="2"
+                                android:maxLines="1"
+                                android:lines="1"
                                 android:textSize="36sp"
                                 android:text="00"
+                                android:numeric="integer"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:padding="9dp"/>
@@ -194,7 +214,7 @@
                                 android:text=":"
                                 android:gravity="center"
                                 android:textColor="@color/color_text_blue"
-                                android:padding="9dp"/>
+                                android:paddingVertical="9dp"/>
                             <TextView
                                 android:id="@+id/tv_durasimenit"
                                 android:layout_marginHorizontal="3dp"
@@ -204,8 +224,12 @@
                                 android:layout_toRightOf="@+id/space1a"
                                 android:background="@drawable/bg_et"
                                 android:textSize="36sp"
+                                android:maxLength="2"
+                                android:maxLines="1"
+                                android:lines="1"
                                 android:text="00"
                                 android:gravity="center"
+                                android:numeric="integer"
                                 android:textColor="@color/white"
                                 android:padding="9dp"/>
                             <TextView
@@ -217,7 +241,7 @@
                                 android:text=":"
                                 android:gravity="center"
                                 android:textColor="@color/color_text_blue"
-                                android:padding="9dp"/>
+                                android:paddingVertical="9dp"/>
                             <TextView
                                 android:id="@+id/tv_durasidetik"
                                 android:layout_marginHorizontal="3dp"
@@ -227,10 +251,15 @@
                                 android:layout_toRightOf="@+id/space2a"
                                 android:background="@drawable/bg_et"
                                 android:textSize="36sp"
+                                android:maxLength="2"
+                                android:maxLines="1"
+                                android:lines="1"
+                                android:numeric="integer"
                                 android:text="00"
                                 android:gravity="center"
                                 android:textColor="@color/white"
-                                android:padding="9dp"/>
+                                android:padding="9dp"
+                                android:layout_marginRight="10dp"/>
                         </RelativeLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -265,8 +294,10 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical|right"
+                            android:layout_gravity="center_vertical|right"
                             android:layout_marginVertical="10dp"
+                            android:paddingRight="10dp"
                             android:padding="0dp">
                             <TextView
                                 android:id="@+id/lbl_ba"
@@ -312,7 +343,8 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
+                            android:layout_gravity="center_vertical|right"
+                            android:gravity="center_vertical|right"
                             android:layout_marginVertical="10dp"
                             android:padding="0dp">
                             <TextView
@@ -360,30 +392,29 @@
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_simpan"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_user"
+                android:layout_marginTop="36dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SIMPAN"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/bg_btn"
-                android:textColor="@color/white"
+                android:layout_height="?android:attr/actionBarSize"
+                android:layout_marginHorizontal="12dp"
                 android:layout_gravity="center_horizontal"
-                />
+                app:cardCornerRadius="16dp"
+                android:background="@drawable/bg_btn_blue"
+                android:layout_marginBottom="100dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    android:paddingHorizontal="24dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_btn_blue"
+                    android:text="SIMPAN "
+                    android:drawablePadding="12dp"/>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
-    <TextView
-        android:id="@+id/text_notifications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center" />
+
 </RelativeLayout>

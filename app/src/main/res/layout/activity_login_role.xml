@@ -26,30 +26,75 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:textColor="@color/white"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_below="@+id/tvrole">
 
-    <Button
-        android:id="@+id/btnadmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvrole"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/bg_btn"
-        android:drawableLeft="@drawable/ic_user"
-        android:drawableTint="@color/white"
-        android:text="admin"
-        android:visibility="visible" />
-    <Button
-        android:id="@+id/btnuser"
-        android:layout_below="@+id/tvrole"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/bg_btn"
-        android:text="admin"
-        android:drawableLeft="@drawable/ic_user"
-        android:drawableTint="@color/white"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="?android:attr/actionBarSize"
+            app:cardCornerRadius="24dp"
+            android:layout_marginHorizontal="12dp"
+            android:background="@drawable/bg_btn_white">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:paddingHorizontal="24dp"
+                android:textColor="@color/color_text_blue"
+                android:text="Admin"
+                android:drawablePadding="12dp"
+                android:drawableLeft="@drawable/ic_user"/>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_user"
+            android:layout_toRightOf="@+id/btn_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_marginHorizontal="12dp"
+            app:cardCornerRadius="24dp"
+            android:background="@drawable/bg_btn_white">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:paddingHorizontal="24dp"
+                android:textColor="@color/color_text_blue"
+                android:text="User "
+                android:drawableLeft="@drawable/ic_user"
+                android:drawablePadding="12dp"/>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+<!--    <Button-->
+<!--        android:id="@+id/btnadmin"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/tvrole"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_marginLeft="50dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="@drawable/bg_btn"-->
+<!--        android:drawableLeft="@drawable/ic_user"-->
+<!--        android:text="admin"-->
+<!--        android:textColor="@color/color_text_blue"-->
+<!--        android:visibility="visible" />-->
+<!--    <Button-->
+<!--        android:id="@+id/btnuser"-->
+<!--        android:layout_below="@+id/tvrole"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_marginRight="50dp"-->
+<!--        android:background="@drawable/bg_btn"-->
+<!--        android:text="admin"-->
+<!--        android:drawableLeft="@drawable/ic_user"-->
+<!--        android:textColor="@color/color_text_blue"/>-->
 </RelativeLayout>

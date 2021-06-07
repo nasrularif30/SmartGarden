@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "878344508280",
+    "firebase_url": "https://siramkebunku-default-rtdb.firebaseio.com",
+    "project_id": "siramkebunku",
+    "storage_bucket": "siramkebunku.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878344508280:android:570ea1993d22f1bd192e8d",
+        "android_client_info": {
+          "package_name": "com.movtech.smartgarden"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878344508280-d5ah3rlmt0o8o3c74vqsgcr29iacsdua.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.movtech.smartgarden",
+            "certificate_hash": "b9a6eae8c9e1532b4b97768664029670eec29b3d"
+          }
+        },
+        {
+          "client_id": "878344508280-ci1s25tpf614r9m7khnmkt0e0buig84k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv6oAAc6ATCWhlGeTbV1szIrwOi6WIFkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878344508280-ci1s25tpf614r9m7khnmkt0e0buig84k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
