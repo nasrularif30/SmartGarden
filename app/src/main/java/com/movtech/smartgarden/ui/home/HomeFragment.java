@@ -1,8 +1,10 @@
 package com.movtech.smartgarden.ui.home;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,6 +41,7 @@ public class HomeFragment extends Fragment {
     TextView tvMoist2a, tvMoist2b, tvMoist2c;
     TextView tvMoist3a, tvMoist3b, tvMoist3c;
     TextView tvMoist4a, tvMoist4b, tvMoist4c;
+    TextView tvVolume;
     private HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -70,11 +73,49 @@ public class HomeFragment extends Fragment {
         tvMoist4a = root.findViewById(R.id.tv_moist_4a);
         tvMoist4b = root.findViewById(R.id.tv_moist_4b);
         tvMoist4c = root.findViewById(R.id.tv_moist_4c);
+        tvVolume = root.findViewById(R.id.tv_volume);
+        myRef.child("Cuaca").addValueEventListener(new ValueEventListener() {
+            @SuppressLint("UseCompatLoadingForDrawables")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.getValue(Integer.class)==0){
+                    tvCuaca.setText("Hujan");
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                        tvCuaca.setCompoundDrawablesWithIntrinsicBounds(getActivity().getApplicationContext().getDrawable(R.drawable.ic_hujan), null, null, null);
+                        tvCuaca.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_hujan), null, null, null);
+                    }
+                }
+                else {
+                    tvCuaca.setText("Tidak Hujan");
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                        tvCuaca.setCompoundDrawablesWithIntrinsicBounds(getActivity().getApplicationContext().getDrawable(R.drawable.ic_tidakhujan), null, null, null);
+                        tvCuaca.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_tidakhujan), null, null, null);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity().getApplicationContext(), "Gagal Mengambil Data \n"+error.toException(), Toast.LENGTH_LONG).show();
+            }
+        });
+        myRef.child("LEVEL_AIR").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int volume = snapshot.child("level").getValue(Integer.class);
+                tvVolume.setText(String.valueOf(volume)+"%");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity().getApplicationContext(), "Gagal Mengambil Data \n"+error.toException(), Toast.LENGTH_LONG).show();
+            }
+        });
 
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                myRef.child("DHT").addListenerForSingleValueEvent(new ValueEventListener() {
+                myRef.child("DHT").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                if (snapshot.child("Temp") == null){
@@ -111,7 +152,7 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getActivity().getApplicationContext(), "Gagal Mengambil Data \n"+error.toException(), Toast.LENGTH_LONG).show();
                     }
                 });
-                myRef.child("Tanaman1").addListenerForSingleValueEvent(new ValueEventListener() {
+                myRef.child("Tanaman1").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                if (snapshot.child("moist1") == null){
@@ -121,9 +162,9 @@ public class HomeFragment extends Fragment {
 //                    tvMoist1c.setText("-");
 //                }
 //                else {
-                        Float dataMoist1 = snapshot.child("moist1").getValue(Float.class);
-                        Float dataMoist2 = snapshot.child("moist2").getValue(Float.class);
-                        Float dataMoist3 = snapshot.child("moist3").getValue(Float.class);
+                        Float dataMoist1 = snapshot.child("Kelembaban1").getValue(Float.class);
+                        Float dataMoist2 = snapshot.child("Kelembaban2").getValue(Float.class);
+                        Float dataMoist3 = snapshot.child("Kelembaban3").getValue(Float.class);
                         Log.i("cobaa", dataMoist1+ "/" +dataMoist2);
                         tvMoist1a.setText(dataMoist1.toString());
                         tvMoist1b.setText(dataMoist2.toString());
@@ -137,7 +178,7 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getActivity().getApplicationContext(), "Gagal Mengambil Data \n"+error.toException(), Toast.LENGTH_LONG).show();
                     }
                 });
-                myRef.child("Tanaman2").addListenerForSingleValueEvent(new ValueEventListener() {
+                myRef.child("Tanaman2").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                if (snapshot.child("moist1") == null){
@@ -147,9 +188,9 @@ public class HomeFragment extends Fragment {
 //                    tvMoist2c.setText("-");
 //                }
 //                else {
-                        Float dataMoist1 = snapshot.child("moist1").getValue(Float.class);
-                        Float dataMoist2 = snapshot.child("moist2").getValue(Float.class);
-                        Float dataMoist3 = snapshot.child("moist3").getValue(Float.class);
+                        Float dataMoist1 = snapshot.child("Kelembaban4").getValue(Float.class);
+                        Float dataMoist2 = snapshot.child("Kelembaban5").getValue(Float.class);
+                        Float dataMoist3 = snapshot.child("Kelembaban6").getValue(Float.class);
                         Log.i("cobaa", dataMoist1+ "/" +dataMoist2);
                         tvMoist2a.setText(dataMoist1.toString());
                         tvMoist2b.setText(dataMoist2.toString());
@@ -163,7 +204,7 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getActivity().getApplicationContext(), "Gagal Mengambil Data \n"+error.toException(), Toast.LENGTH_LONG).show();
                     }
                 });
-                myRef.child("Tanaman3").addListenerForSingleValueEvent(new ValueEventListener() {
+                myRef.child("Tanaman3").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                if (snapshot.child("moist1") == null){
@@ -173,9 +214,9 @@ public class HomeFragment extends Fragment {
 //                    tvMoist3c.setText("-");
 //                }
 //                else {
-                        Float dataMoist1 = snapshot.child("moist1").getValue(Float.class);
-                        Float dataMoist2 = snapshot.child("moist2").getValue(Float.class);
-                        Float dataMoist3 = snapshot.child("moist3").getValue(Float.class);
+                        Float dataMoist1 = snapshot.child("Kelembaban7").getValue(Float.class);
+                        Float dataMoist2 = snapshot.child("Kelembaban8").getValue(Float.class);
+                        Float dataMoist3 = snapshot.child("Kelembaban9").getValue(Float.class);
                         Log.i("cobaa", dataMoist1+ "/" +dataMoist2);
                         tvMoist3a.setText(dataMoist1.toString());
                         tvMoist3b.setText(dataMoist2.toString());
@@ -189,7 +230,7 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getActivity().getApplicationContext(), "Gagal Mengambil Data \n"+error.toException(), Toast.LENGTH_LONG).show();
                     }
                 });
-                myRef.child("Tanaman4").addListenerForSingleValueEvent(new ValueEventListener() {
+                myRef.child("Tanaman4").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                if (snapshot.child("moist1").getValue() == null){
@@ -199,9 +240,9 @@ public class HomeFragment extends Fragment {
 //                    tvMoist4c.setText("-");
 //                }
 //                else {
-                        Float dataMoist1 = snapshot.child("moist1").getValue(Float.class);
-                        Float dataMoist2 = snapshot.child("moist2").getValue(Float.class);
-                        Float dataMoist3 = snapshot.child("moist3").getValue(Float.class);
+                        Float dataMoist1 = snapshot.child("Kelembaban10").getValue(Float.class);
+                        Float dataMoist2 = snapshot.child("Kelembaban11").getValue(Float.class);
+                        Float dataMoist3 = snapshot.child("Kelembaban12").getValue(Float.class);
                         Log.i("cobaa", dataMoist1+ "/" +dataMoist2);
                         tvMoist4a.setText(dataMoist1.toString());
                         tvMoist4b.setText(dataMoist2.toString());
@@ -234,4 +275,5 @@ public class HomeFragment extends Fragment {
         this.getActivity().finish();
         startActivity(new Intent(this.getActivity(), LoginRole.class));
     }
+
 }

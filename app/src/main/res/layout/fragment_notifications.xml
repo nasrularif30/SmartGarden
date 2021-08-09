@@ -44,10 +44,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/bg_softwhite">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
@@ -75,7 +77,6 @@
                         android:layout_gravity="center"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
-
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -107,6 +108,7 @@
                                 android:maxLength="2"
                                 android:maxLines="1"
                                 android:lines="1"
+                                android:singleLine="true"
                                 android:textSize="36sp"
                                 android:numeric="integer"
                                 android:text="00"
@@ -135,39 +137,40 @@
                                 android:maxLength="2"
                                 android:maxLines="1"
                                 android:lines="1"
+                                android:singleLine="true"
                                 android:text="00"
                                 android:numeric="integer"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:padding="9dp"/>
-                            <TextView
-                                android:id="@+id/space2"
-                                android:layout_toRightOf="@+id/tv_waktumenit"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="36sp"
-                                android:text=":"
-                                android:gravity="center"
-                                android:textColor="@color/color_text_blue"
-                                android:paddingVertical="9dp"/>
-                            <TextView
-                                android:id="@+id/tv_waktudetik"
-                                android:layout_marginHorizontal="3dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/space2"
-                                android:background="@drawable/bg_et"
-                                android:maxLength="2"
-                                android:maxLines="1"
-                                android:lines="1"
-                                android:textSize="36sp"
-                                android:text="00"
-                                android:numeric="integer"
-                                android:gravity="center"
-                                android:textColor="@color/white"
-                                android:padding="9dp"
-                                android:layout_marginRight="10dp"/>
+<!--                            <TextView-->
+<!--                                android:id="@+id/space2"-->
+<!--                                android:layout_toRightOf="@+id/tv_waktumenit"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:textSize="36sp"-->
+<!--                                android:text=":"-->
+<!--                                android:gravity="center"-->
+<!--                                android:textColor="@color/color_text_blue"-->
+<!--                                android:paddingVertical="9dp"/>-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/tv_waktudetik"-->
+<!--                                android:layout_marginHorizontal="3dp"-->
+<!--                                android:layout_marginLeft="10dp"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_toRightOf="@+id/space2"-->
+<!--                                android:background="@drawable/bg_et"-->
+<!--                                android:maxLength="2"-->
+<!--                                android:maxLines="1"-->
+<!--                                android:lines="1"-->
+<!--                                android:textSize="36sp"-->
+<!--                                android:text="00"-->
+<!--                                android:numeric="integer"-->
+<!--                                android:gravity="center"-->
+<!--                                android:textColor="@color/white"-->
+<!--                                android:padding="9dp"-->
+<!--                                android:layout_marginRight="10dp"/>-->
                         </RelativeLayout>
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -188,7 +191,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:textSize="24sp"
                                 android:textColor="#147492"/>
-                            <TextView
+                            <EditText
                                 android:id="@+id/tv_durasijam"
                                 android:layout_marginHorizontal="3dp"
                                 android:layout_marginLeft="10dp"
@@ -198,9 +201,11 @@
                                 android:background="@drawable/bg_et"
                                 android:maxLength="2"
                                 android:maxLines="1"
+                                android:singleLine="true"
                                 android:lines="1"
                                 android:textSize="36sp"
-                                android:text="00"
+                                android:textColorHint="@color/soft_white"
+                                android:hint="00"
                                 android:numeric="integer"
                                 android:gravity="center"
                                 android:textColor="@color/white"
@@ -215,7 +220,7 @@
                                 android:gravity="center"
                                 android:textColor="@color/color_text_blue"
                                 android:paddingVertical="9dp"/>
-                            <TextView
+                            <EditText
                                 android:id="@+id/tv_durasimenit"
                                 android:layout_marginHorizontal="3dp"
                                 android:layout_marginLeft="10dp"
@@ -225,9 +230,11 @@
                                 android:background="@drawable/bg_et"
                                 android:textSize="36sp"
                                 android:maxLength="2"
+                                android:singleLine="true"
                                 android:maxLines="1"
                                 android:lines="1"
-                                android:text="00"
+                                android:textColorHint="@color/soft_white"
+                                android:hint="00"
                                 android:gravity="center"
                                 android:numeric="integer"
                                 android:textColor="@color/white"
@@ -242,7 +249,7 @@
                                 android:gravity="center"
                                 android:textColor="@color/color_text_blue"
                                 android:paddingVertical="9dp"/>
-                            <TextView
+                            <EditText
                                 android:id="@+id/tv_durasidetik"
                                 android:layout_marginHorizontal="3dp"
                                 android:layout_marginLeft="10dp"
@@ -251,11 +258,13 @@
                                 android:layout_toRightOf="@+id/space2a"
                                 android:background="@drawable/bg_et"
                                 android:textSize="36sp"
+                                android:singleLine="true"
                                 android:maxLength="2"
                                 android:maxLines="1"
                                 android:lines="1"
                                 android:numeric="integer"
-                                android:text="00"
+                                android:textColorHint="@color/soft_white"
+                                android:hint="00"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:padding="9dp"
@@ -305,7 +314,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:text="Batas Kering"
+                                android:text="Batas Basah"
                                 android:layout_marginRight="20dp"
                                 android:gravity="center_vertical"
                                 android:layout_marginLeft="10dp"
@@ -320,6 +329,7 @@
                                 android:layout_toRightOf="@+id/lbl_ba"
                                 android:background="@drawable/bg_et"
                                 android:textSize="36sp"
+                                android:singleLine="true"
                                 android:hint="00"
                                 android:textColorHint="@color/white"
                                 android:numeric="integer"
@@ -369,6 +379,7 @@
                                 android:background="@drawable/bg_et"
                                 android:textSize="36sp"
                                 android:hint="00"
+                                android:singleLine="true"
                                 android:textColorHint="@color/white"
                                 android:numeric="integer"
                                 android:gravity="center"
@@ -392,28 +403,19 @@
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/btn_user"
-                android:layout_marginTop="36dp"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_simpan"
                 android:layout_width="wrap_content"
-                android:layout_height="?android:attr/actionBarSize"
-                android:layout_marginHorizontal="12dp"
-                android:layout_gravity="center_horizontal"
-                app:cardCornerRadius="16dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_btn_blue"
-                android:layout_marginBottom="100dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="24sp"
-                    android:gravity="center"
-                    android:paddingHorizontal="24dp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/bg_btn_blue"
-                    android:text="SIMPAN "
-                    android:drawablePadding="12dp"/>
-            </androidx.cardview.widget.CardView>
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:text="SIMPAN"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_marginVertical="24dp"
+                android:layout_marginBottom="100dp"/>
+
         </LinearLayout>
     </ScrollView>
 
