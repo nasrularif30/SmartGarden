@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ import com.movtech.smartgarden.R;
 
 public class DashboardFragment extends Fragment {
     ImageView setting;
-    CheckBox tgSiram, tgMode;
+    Switch tgSiram, tgMode;
     SharedPreferences sharedPreferences;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
@@ -66,30 +67,34 @@ public class DashboardFragment extends Fragment {
                 int mode = snapshot.child("Kontrol").child("getMode").getValue(Integer.class);
                 int siram = snapshot.child("Kontrol").child("getSiram").getValue(Integer.class);
                 if (mode == 1) {
+                    tgMode.setChecked(true);
                     tgSiram.setClickable(false);
                     tgSiram.setEnabled(false);
 //                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //                                tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24, getActivity().getTheme()));
 //                            } else
-                    tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24));
+//                    tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24));
                 } else {
+                    tgMode.setChecked(false);
                     tgSiram.setClickable(true);
                     tgSiram.setEnabled(true);
 //                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //                                tgMode.setButtonDrawable(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24, getActivity().getTheme()));
 //                            } else
-                    tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24));
+//                    tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24));
                 }
                 if (siram == 1) {
+                    tgSiram.setChecked(true);
 //                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //                                tgSiram.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24, getActivity().getTheme()));
 //                            } else
-                    tgSiram.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24));
+//                    tgSiram.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24));
                 } else {
+                    tgSiram.setChecked(false);
 //                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //                                tgSiram.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24, getActivity().getTheme()));
 //                            } else
-                    tgSiram.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24));
+//                    tgSiram.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24));
                 }
             }
 
@@ -98,17 +103,17 @@ public class DashboardFragment extends Fragment {
 
             }
         });
-        if (tgMode.isChecked()) {
-            tgSiram.setEnabled(false);
-            tgSiram.setClickable(false);
-            tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24));
-            myRef.child("Kontrol").child("getMode").setValue(1);
-        } else {
-            tgSiram.setEnabled(true);
-            tgSiram.setClickable(true);
-            tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24));
-            myRef.child("Kontrol").child("getMode").setValue(0);
-        }
+//        if (tgMode.isChecked()) {
+//            tgSiram.setEnabled(false);
+//            tgSiram.setClickable(false);
+////            tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24));
+//            myRef.child("Kontrol").child("getMode").setValue(1);
+//        } else {
+//            tgSiram.setEnabled(true);
+//            tgSiram.setClickable(true);
+////            tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24));
+//            myRef.child("Kontrol").child("getMode").setValue(0);
+//        }
         tgMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -116,12 +121,12 @@ public class DashboardFragment extends Fragment {
                 if (tgMode.isChecked()) {
                     tgSiram.setEnabled(false);
                     tgSiram.setClickable(false);
-                    tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24));
+//                    tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24));
                     myRef.child("Kontrol").child("getMode").setValue(1);
                 } else {
                     tgSiram.setEnabled(true);
                     tgSiram.setClickable(true);
-                    tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24));
+//                    tgMode.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24));
                     myRef.child("Kontrol").child("getMode").setValue(0);
                 }
             }
@@ -131,10 +136,10 @@ public class DashboardFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if (tgSiram.isChecked()) {
-                    tgSiram.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24));
+//                    tgSiram.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_on_24));
                     myRef.child("Kontrol").child("getSiram").setValue(1);
                 } else {
-                    tgSiram.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24));
+//                    tgSiram.setBackground(getResources().getDrawable(R.drawable.ic_baseline_toggle_off_24));
                     myRef.child("Kontrol").child("getSiram").setValue(0);
                 }
             }

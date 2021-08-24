@@ -31,12 +31,12 @@ public class BerandaUser extends AppCompatActivity {
     DatabaseReference myRef = database.getReference();
     String role;
     TextView tvCuaca;
-    TextView tvSuhu1, tvSuhu2, tvSuhu3, tvSuhu4, tvHum1, tvHum2, tvHum3, tvHum4;
-    TextView tvMoist1a, tvMoist1b, tvMoist1c;
-    TextView tvMoist2a, tvMoist2b, tvMoist2c;
-    TextView tvMoist3a, tvMoist3b, tvMoist3c;
-    TextView tvMoist4a, tvMoist4b, tvMoist4c;
+    TextView tvSuhu, tvHum;
+    TextView tvMoist1, tvMoist2, tvMoist3;
+    TextView tvMoist4, tvMoist5, tvMoist6;
+    TextView tvMoist7, tvMoist8, tvMoistAvg;
     TextView tvVolume;
+    Float dataMoist1, dataMoist2, dataMoist3, dataMoist4, dataMoist5, dataMoist6, dataMoist7, dataMoist8, moistAvg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,26 +46,17 @@ public class BerandaUser extends AppCompatActivity {
 
         setting = findViewById(R.id.setting);
         tvCuaca = findViewById(R.id.tv_hujan);
-        tvSuhu1 = findViewById(R.id.tv_suhu_1);
-        tvSuhu2 = findViewById(R.id.tv_suhu_2);
-        tvSuhu3 = findViewById(R.id.tv_suhu_3);
-        tvSuhu4 = findViewById(R.id.tv_suhu_4);
-        tvHum1 = findViewById(R.id.tv_hum_1);
-        tvHum2 = findViewById(R.id.tv_hum_2);
-        tvHum3 = findViewById(R.id.tv_hum_3);
-        tvHum4 = findViewById(R.id.tv_hum_4);
-        tvMoist1a = findViewById(R.id.tv_moist_1a);
-        tvMoist1b = findViewById(R.id.tv_moist_1b);
-        tvMoist1c = findViewById(R.id.tv_moist_1c);
-        tvMoist2a = findViewById(R.id.tv_moist_2a);
-        tvMoist2b = findViewById(R.id.tv_moist_2b);
-        tvMoist2c = findViewById(R.id.tv_moist_2c);
-        tvMoist3a = findViewById(R.id.tv_moist_3a);
-        tvMoist3b = findViewById(R.id.tv_moist_3b);
-        tvMoist3c = findViewById(R.id.tv_moist_3c);
-        tvMoist4a = findViewById(R.id.tv_moist_4a);
-        tvMoist4b = findViewById(R.id.tv_moist_4b);
-        tvMoist4c = findViewById(R.id.tv_moist_4c);
+        tvSuhu = findViewById(R.id.tv_suhu);
+        tvHum = findViewById(R.id.tv_hum);
+        tvMoistAvg = findViewById(R.id.tv_moist_avg);
+        tvMoist1 = findViewById(R.id.tv_moist_1);
+        tvMoist2 = findViewById(R.id.tv_moist_2);
+        tvMoist3 = findViewById(R.id.tv_moist_3);
+        tvMoist4 = findViewById(R.id.tv_moist_4);
+        tvMoist5 = findViewById(R.id.tv_moist_5);
+        tvMoist6 = findViewById(R.id.tv_moist_6);
+        tvMoist7 = findViewById(R.id.tv_moist_7);
+        tvMoist8 = findViewById(R.id.tv_moist_8);
         tvVolume = findViewById(R.id.tv_volume);
         myRef.child("Cuaca").addValueEventListener(new ValueEventListener() {
             @Override
@@ -104,32 +95,11 @@ public class BerandaUser extends AppCompatActivity {
         myRef.child("DHT").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if (snapshot.child("Temp") == null){
-//                    Log.i("cobaa", "onDataChange: "+snapshot.getChildren().toString());
-//                    tvSuhu1.setText("-");
-//                    tvSuhu2.setText("-");
-//                    tvSuhu3.setText("-");
-//                    tvSuhu4.setText("-");
-//
-//                    tvHum1.setText("-");
-//                    tvHum2.setText("-");
-//                    tvHum3.setText("-");
-//                    tvHum4.setText("-");
-//                }
-//                else {
                     Float dataSuhu = snapshot.child("Temp").getValue(Float.class);
                     Float dataHum = snapshot.child("Hum").getValue(Float.class);
                     Log.i("cobaa", dataSuhu+ "/" +dataHum);
-                    tvSuhu1.setText(dataSuhu.toString());
-                    tvSuhu2.setText(dataSuhu.toString());
-                    tvSuhu3.setText(dataSuhu.toString());
-                    tvSuhu4.setText(dataSuhu.toString());
-
-                    tvHum1.setText(dataHum.toString());
-                    tvHum2.setText(dataHum.toString());
-                    tvHum3.setText(dataHum.toString());
-                    tvHum4.setText(dataHum.toString());
-//                }
+                    tvSuhu.setText(String.valueOf(dataSuhu));
+                    tvHum.setText(String.valueOf(dataHum));
 
             }
 
@@ -138,102 +108,31 @@ public class BerandaUser extends AppCompatActivity {
                 Toast.makeText(BerandaUser.this, "Gagal Mengambil Data \n"+error.toException(), Toast.LENGTH_LONG).show();
             }
         });
-        myRef.child("Tanaman1").addValueEventListener(new ValueEventListener() {
+
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if (snapshot.child("moist1") == null){
-//                    Log.i("cobaa", "onDataChange: "+snapshot.getChildren().toString());
-//                    tvMoist1a.setText("-");
-//                    tvMoist1b.setText("-");
-//                    tvMoist1c.setText("-");
-//                }
-//                else {
-                    Float dataMoist1 = snapshot.child("Kelembaban1").getValue(Float.class);
-                    Float dataMoist2 = snapshot.child("Kelembaban2").getValue(Float.class);
-                    Float dataMoist3 = snapshot.child("Kelembaban3").getValue(Float.class);
-                    Log.i("cobaa", dataMoist1+ "/" +dataMoist2);
-                    tvMoist1a.setText(dataMoist1.toString());
-                    tvMoist1b.setText(dataMoist2.toString());
-                    tvMoist1c.setText(dataMoist3.toString());
-//                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(BerandaUser.this, "Gagal Mengambil Data \n"+error.toException(), Toast.LENGTH_LONG).show();
-            }
-        });
-        myRef.child("Tanaman2").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if (snapshot.child("moist1") == null){
-//                    Log.i("cobaa", "onDataChange: "+snapshot.getChildren().toString());
-//                    tvMoist2a.setText("-");
-//                    tvMoist2b.setText("-");
-//                    tvMoist2c.setText("-");
-//                }
-//                else {
-                    Float dataMoist1 = snapshot.child("Kelembaban4").getValue(Float.class);
-                    Float dataMoist2 = snapshot.child("Kelembaban5").getValue(Float.class);
-                    Float dataMoist3 = snapshot.child("Kelembaban6").getValue(Float.class);
-                    Log.i("cobaa", dataMoist1+ "/" +dataMoist2);
-                    tvMoist2a.setText(dataMoist1.toString());
-                    tvMoist2b.setText(dataMoist2.toString());
-                    tvMoist2c.setText(dataMoist3.toString());
-//                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(BerandaUser.this, "Gagal Mengambil Data \n"+error.toException(), Toast.LENGTH_LONG).show();
-            }
-        });
-        myRef.child("Tanaman3").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if (snapshot.child("moist1") == null){
-//                    Log.i("cobaa", "onDataChange: "+snapshot.getChildren().toString());
-//                    tvMoist3a.setText("-");
-//                    tvMoist3b.setText("-");
-//                    tvMoist3c.setText("-");
-//                }
-//                else {
-                    Float dataMoist1 = snapshot.child("Kelembaban7").getValue(Float.class);
-                    Float dataMoist2 = snapshot.child("Kelembaban8").getValue(Float.class);
-                    Float dataMoist3 = snapshot.child("Kelembaban9").getValue(Float.class);
-                    Log.i("cobaa", dataMoist1+ "/" +dataMoist2);
-                    tvMoist3a.setText(dataMoist1.toString());
-                    tvMoist3b.setText(dataMoist2.toString());
-                    tvMoist3c.setText(dataMoist3.toString());
-//                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(BerandaUser.this, "Gagal Mengambil Data \n"+error.toException(), Toast.LENGTH_LONG).show();
-            }
-        });
-        myRef.child("Tanaman4").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if (snapshot.child("moist1").getValue() == null){
-//                    Log.i("cobaa", "onDataChange: "+snapshot.getChildren().toString());
-//                    tvMoist4a.setText("-");
-//                    tvMoist4b.setText("-");
-//                    tvMoist4c.setText("-");
-//                }
-//                else {
-                    Float dataMoist1 = snapshot.child("Kelembaban10").getValue(Float.class);
-                    Float dataMoist2 = snapshot.child("Kelembaban11").getValue(Float.class);
-                    Float dataMoist3 = snapshot.child("Kelembaban12").getValue(Float.class);
-                    Log.i("cobaa", dataMoist1+ "/" +dataMoist2);
-                    tvMoist4a.setText(dataMoist1.toString());
-                    tvMoist4b.setText(dataMoist2.toString());
-                    tvMoist4c.setText(dataMoist3.toString());
-//                }
+                dataMoist1 = snapshot.child("Tanaman1").child("Kelembaban1").getValue(Float.class);
+                dataMoist2 = snapshot.child("Tanaman1").child("Kelembaban2").getValue(Float.class);
+                dataMoist3 = snapshot.child("Tanaman1").child("Kelembaban3").getValue(Float.class);
+                Log.i("cobaa", dataMoist1+ "/" +dataMoist2);
+                tvMoist1.setText(String.valueOf(dataMoist1));
+                tvMoist2.setText(String.valueOf(dataMoist2));
+                tvMoist3.setText(String.valueOf(dataMoist3));
+                dataMoist4 = snapshot.child("Tanaman2").child("Kelembaban4").getValue(Float.class);
+                dataMoist5 = snapshot.child("Tanaman2").child("Kelembaban5").getValue(Float.class);
+                dataMoist6 = snapshot.child("Tanaman2").child("Kelembaban6").getValue(Float.class);
+                tvMoist4.setText(String.valueOf(dataMoist4));
+                tvMoist5.setText(String.valueOf(dataMoist5));
+                tvMoist6.setText(String.valueOf(dataMoist6));
+                dataMoist7 = snapshot.child("Tanaman3").child("Kelembaban7").getValue(Float.class);
+                dataMoist8 = snapshot.child("Tanaman3").child("Kelembaban8").getValue(Float.class);
+                tvMoist7.setText(String.valueOf(dataMoist7));
+                tvMoist8.setText(String.valueOf(dataMoist8));
+                if (dataMoist1 != null || dataMoist2 != null || dataMoist3 != null || dataMoist4 != null || dataMoist5 != null || dataMoist6 != null || dataMoist7 != null || dataMoist8 != null){
+                    moistAvg = (dataMoist1+dataMoist2+dataMoist3+dataMoist4+dataMoist5+dataMoist6+dataMoist7+dataMoist8)/8;
+                    tvMoistAvg.setText(String.valueOf(moistAvg)+"%");
+                }
 
             }
 
@@ -249,6 +148,7 @@ public class BerandaUser extends AppCompatActivity {
             }
         });
     }
+
 
     public void logout(){
         SharedPreferences.Editor editor = sharedPreferences.edit();
